@@ -1,0 +1,54 @@
+﻿@model CVGS.eventData
+
+@{
+    ViewData["Title"] = "Delete an Event";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Are you sure you want to delete this event?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Event Number
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.eventId)
+        </dd>
+        <dt>
+            Event Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.name)
+        </dd>
+        <dt>
+            Date of Event
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.date)
+        </dd>
+        <dt>
+            Description
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.description)
+        </dd>
+        <dt>
+            Events' Creator
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.createdBy)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            @Html.ActionLink("Cancel", "Index")
+        </div>
+    }
+</div>

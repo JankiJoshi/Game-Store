@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CVGSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cardType">
+    <Key>
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="creditInformations" Relationship="Self.FK__creditInf__cardT__7A3223E8" FromRole="cardType" ToRole="creditInformation" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="username" />
+      <PropertyRef Name="gameId" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gameId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="game" Relationship="Self.FK_cart_game" FromRole="cart" ToRole="game" />
+    <NavigationProperty Name="login" Relationship="Self.FK_cart_login" FromRole="cart" ToRole="login" />
+  </EntityType>
+  <EntityType Name="creditInformation">
+    <Key>
+      <PropertyRef Name="cardNumber" />
+    </Key>
+    <Property Name="cardNumber" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cardHolder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cardType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="securityCode" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="cardType1" Relationship="Self.FK__creditInf__cardT__7A3223E8" FromRole="creditInformation" ToRole="cardType" />
+    <NavigationProperty Name="user" Relationship="Self.FK__creditInf__usern__7B264821" FromRole="creditInformation" ToRole="user" />
+  </EntityType>
+  <EntityType Name="esrb_rating">
+    <Key>
+      <PropertyRef Name="ratingCode" />
+    </Key>
+    <Property Name="ratingCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="games" Relationship="Self.FK__game__rating__4CA06362" FromRole="esrb_rating" ToRole="game" />
+  </EntityType>
+  <EntityType Name="event_register">
+    <Key>
+      <PropertyRef Name="registerId" />
+    </Key>
+    <Property Name="registerId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="eventId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="eventData" Relationship="Self.FK_event_register_eventData" FromRole="event_register" ToRole="eventData" />
+    <NavigationProperty Name="login" Relationship="Self.FK_event_register_login" FromRole="event_register" ToRole="login" />
+  </EntityType>
+  <EntityType Name="eventData">
+    <Key>
+      <PropertyRef Name="eventId" />
+    </Key>
+    <Property Name="eventId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="createdBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="event_register" Relationship="Self.FK_event_register_eventData" FromRole="eventData" ToRole="event_register" />
+    <NavigationProperty Name="user" Relationship="Self.FK__event__createdBy__4D94879B" FromRole="eventData" ToRole="user" />
+  </EntityType>
+  <EntityType Name="FriendsList">
+    <Key>
+      <PropertyRef Name="username" />
+      <PropertyRef Name="FriendIId" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FriendIId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_FriendsList_FriendsList" FromRole="FriendsList" ToRole="user" />
+  </EntityType>
+  <EntityType Name="game">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="publisher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="publishDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="genre" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="rating" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="carts" Relationship="Self.FK_cart_game" FromRole="game" ToRole="cart" />
+    <NavigationProperty Name="esrb_rating" Relationship="Self.FK__game__rating__4CA06362" FromRole="game" ToRole="esrb_rating" />
+    <NavigationProperty Name="genre1" Relationship="Self.FK__game__genre__49C3F6B7" FromRole="game" ToRole="genre" />
+    <NavigationProperty Name="genre2" Relationship="Self.FK__game__genre__4BAC3F29" FromRole="game" ToRole="genre" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__gameId__4F7CD00D" FromRole="game" ToRole="orders" />
+    <NavigationProperty Name="wishLists" Relationship="Self.FK__wishList__gameId__5165187F" FromRole="game" ToRole="wishList" />
+    <NavigationProperty Name="reviews" Relationship="Self.FK_reviews_user" FromRole="game" ToRole="reviews" />
+  </EntityType>
+  <EntityType Name="genre">
+    <Key>
+      <PropertyRef Name="genreKey" />
+    </Key>
+    <Property Name="genreKey" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="games" Relationship="Self.FK__game__genre__49C3F6B7" FromRole="genre" ToRole="game" />
+    <NavigationProperty Name="games1" Relationship="Self.FK__game__genre__4BAC3F29" FromRole="genre" ToRole="game" />
+    <NavigationProperty Name="users" Relationship="Self.FK__user__favGenre__72C60C4A" FromRole="genre" ToRole="user" />
+    <NavigationProperty Name="users1" Relationship="Self.FK__user__favGenre2__71D1E811" FromRole="genre" ToRole="user" />
+  </EntityType>
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="carts" Relationship="Self.FK_cart_login" FromRole="login" ToRole="cart" />
+    <NavigationProperty Name="event_register" Relationship="Self.FK_event_register_login" FromRole="login" ToRole="event_register" />
+    <NavigationProperty Name="user" Relationship="Self.FK__login__username__5AEE82B9" FromRole="login" ToRole="user" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="gameId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="orderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="shipDate" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="game" Relationship="Self.FK__orders__gameId__4F7CD00D" FromRole="orders" ToRole="game" />
+    <NavigationProperty Name="orderStatu" Relationship="Self.FK__orders__status__756D6ECB" FromRole="orders" ToRole="orderStatus" />
+    <NavigationProperty Name="user" Relationship="Self.FK__orders__username__4E88ABD4" FromRole="orders" ToRole="user" />
+  </EntityType>
+  <EntityType Name="orderStatu">
+    <Key>
+      <PropertyRef Name="status" />
+    </Key>
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__status__756D6ECB" FromRole="orderStatus" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="passReset">
+    <Key>
+      <PropertyRef Name="resetCode" />
+    </Key>
+    <Property Name="resetCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK__passReset__usern__76969D2E" FromRole="passReset" ToRole="user" />
+  </EntityType>
+  <EntityType Name="platform">
+    <Key>
+      <PropertyRef Name="platformId" />
+    </Key>
+    <Property Name="platformId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="platformName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="users" Relationship="Self.FK__user__favPlatfor__6FE99F9F" FromRole="platform" ToRole="user" />
+    <NavigationProperty Name="users1" Relationship="Self.FK__user__favPlatfor__70DDC3D8" FromRole="platform" ToRole="user" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="review1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gameId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="approve" Type="Boolean" />
+    <Property Name="rating" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="game" Relationship="Self.FK_reviews_user" FromRole="reviews" ToRole="game" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="shipAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="age" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="employee" Type="Boolean" />
+    <Property Name="favPlatform" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="favPlatform2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="favGenre" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="favGenre2" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="promoEmails" Type="Boolean" Nullable="false" />
+    <Property Name="publicWishlist" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="creditInformations" Relationship="Self.FK__creditInf__usern__7B264821" FromRole="user" ToRole="creditInformation" />
+    <NavigationProperty Name="eventDatas" Relationship="Self.FK__event__createdBy__4D94879B" FromRole="user" ToRole="eventData" />
+    <NavigationProperty Name="FriendsLists" Relationship="Self.FK_FriendsList_FriendsList" FromRole="user" ToRole="FriendsList" />
+    <NavigationProperty Name="genre" Relationship="Self.FK__user__favGenre__72C60C4A" FromRole="user" ToRole="genre" />
+    <NavigationProperty Name="genre1" Relationship="Self.FK__user__favGenre2__71D1E811" FromRole="user" ToRole="genre" />
+    <NavigationProperty Name="login" Relationship="Self.FK__login__username__5AEE82B9" FromRole="user" ToRole="login" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__username__4E88ABD4" FromRole="user" ToRole="orders" />
+    <NavigationProperty Name="passResets" Relationship="Self.FK__passReset__usern__76969D2E" FromRole="user" ToRole="passReset" />
+    <NavigationProperty Name="platform" Relationship="Self.FK__user__favPlatfor__6FE99F9F" FromRole="user" ToRole="platform" />
+    <NavigationProperty Name="platform1" Relationship="Self.FK__user__favPlatfor__70DDC3D8" FromRole="user" ToRole="platform" />
+    <NavigationProperty Name="wishLists" Relationship="Self.FK__wishList__userna__5070F446" FromRole="user" ToRole="wishList" />
+  </EntityType>
+  <EntityType Name="wishList">
+    <Key>
+      <PropertyRef Name="username" />
+      <PropertyRef Name="gameId" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gameId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="dateAdded" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="game" Relationship="Self.FK__wishList__gameId__5165187F" FromRole="wishList" ToRole="game" />
+    <NavigationProperty Name="user" Relationship="Self.FK__wishList__userna__5070F446" FromRole="wishList" ToRole="user" />
+  </EntityType>
+  <Association Name="FK__creditInf__cardT__7A3223E8">
+    <End Role="cardType" Type="Self.cardType" Multiplicity="1" />
+    <End Role="creditInformation" Type="Self.creditInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cardType">
+        <PropertyRef Name="type" />
+      </Principal>
+      <Dependent Role="creditInformation">
+        <PropertyRef Name="cardType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cart_game">
+    <End Role="game" Type="Self.game" Multiplicity="1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="game">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="gameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cart_login">
+    <End Role="login" Type="Self.login" Multiplicity="1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="login">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__creditInf__usern__7B264821">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="creditInformation" Type="Self.creditInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="creditInformation">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__game__rating__4CA06362">
+    <End Role="esrb_rating" Type="Self.esrb_rating" Multiplicity="0..1" />
+    <End Role="game" Type="Self.game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="esrb_rating">
+        <PropertyRef Name="ratingCode" />
+      </Principal>
+      <Dependent Role="game">
+        <PropertyRef Name="rating" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event_register_eventData">
+    <End Role="eventData" Type="Self.eventData" Multiplicity="1" />
+    <End Role="event_register" Type="Self.event_register" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="eventData">
+        <PropertyRef Name="eventId" />
+      </Principal>
+      <Dependent Role="event_register">
+        <PropertyRef Name="eventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event_register_login">
+    <End Role="login" Type="Self.login" Multiplicity="1" />
+    <End Role="event_register" Type="Self.event_register" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="login">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="event_register">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__event__createdBy__4D94879B">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="eventData" Type="Self.eventData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="eventData">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendsList_FriendsList">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="FriendsList" Type="Self.FriendsList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="FriendsList">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__game__genre__49C3F6B7">
+    <End Role="genre" Type="Self.genre" Multiplicity="0..1" />
+    <End Role="game" Type="Self.game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genre">
+        <PropertyRef Name="genreKey" />
+      </Principal>
+      <Dependent Role="game">
+        <PropertyRef Name="genre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__game__genre__4BAC3F29">
+    <End Role="genre" Type="Self.genre" Multiplicity="0..1" />
+    <End Role="game" Type="Self.game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genre">
+        <PropertyRef Name="genreKey" />
+      </Principal>
+      <Dependent Role="game">
+        <PropertyRef Name="genre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__gameId__4F7CD00D">
+    <End Role="game" Type="Self.game" Multiplicity="1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="game">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="gameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__wishList__gameId__5165187F">
+    <End Role="game" Type="Self.game" Multiplicity="1" />
+    <End Role="wishList" Type="Self.wishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="game">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="wishList">
+        <PropertyRef Name="gameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reviews_user">
+    <End Role="game" Type="Self.game" Multiplicity="1" />
+    <End Role="reviews" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="game">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reviews">
+        <PropertyRef Name="gameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user__favGenre__72C60C4A">
+    <End Role="genre" Type="Self.genre" Multiplicity="0..1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genre">
+        <PropertyRef Name="genreKey" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="favGenre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user__favGenre2__71D1E811">
+    <End Role="genre" Type="Self.genre" Multiplicity="0..1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genre">
+        <PropertyRef Name="genreKey" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="favGenre2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__login__username__5AEE82B9">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="login" Type="Self.login" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="login">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__status__756D6ECB">
+    <End Role="orderStatus" Type="Self.orderStatu" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orderStatus">
+        <PropertyRef Name="status" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__username__4E88ABD4">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__passReset__usern__76969D2E">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="passReset" Type="Self.passReset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="passReset">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user__favPlatfor__6FE99F9F">
+    <End Role="platform" Type="Self.platform" Multiplicity="0..1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="platform">
+        <PropertyRef Name="platformId" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="favPlatform" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user__favPlatfor__70DDC3D8">
+    <End Role="platform" Type="Self.platform" Multiplicity="0..1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="platform">
+        <PropertyRef Name="platformId" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="favPlatform2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__wishList__userna__5070F446">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="wishList" Type="Self.wishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="wishList">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CVGSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cardTypes" EntityType="Self.cardType" />
+    <EntitySet Name="carts" EntityType="Self.cart" />
+    <EntitySet Name="creditInformations" EntityType="Self.creditInformation" />
+    <EntitySet Name="esrb_rating" EntityType="Self.esrb_rating" />
+    <EntitySet Name="event_register" EntityType="Self.event_register" />
+    <EntitySet Name="eventDatas" EntityType="Self.eventData" />
+    <EntitySet Name="FriendsLists" EntityType="Self.FriendsList" />
+    <EntitySet Name="games" EntityType="Self.game" />
+    <EntitySet Name="genres" EntityType="Self.genre" />
+    <EntitySet Name="logins" EntityType="Self.login" />
+    <EntitySet Name="orders" EntityType="Self.order" />
+    <EntitySet Name="orderStatus" EntityType="Self.orderStatu" />
+    <EntitySet Name="passResets" EntityType="Self.passReset" />
+    <EntitySet Name="platforms" EntityType="Self.platform" />
+    <EntitySet Name="reviews" EntityType="Self.review" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="wishLists" EntityType="Self.wishList" />
+    <AssociationSet Name="FK__creditInf__cardT__7A3223E8" Association="Self.FK__creditInf__cardT__7A3223E8">
+      <End Role="cardType" EntitySet="cardTypes" />
+      <End Role="creditInformation" EntitySet="creditInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cart_game" Association="Self.FK_cart_game">
+      <End Role="game" EntitySet="games" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cart_login" Association="Self.FK_cart_login">
+      <End Role="login" EntitySet="logins" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__creditInf__usern__7B264821" Association="Self.FK__creditInf__usern__7B264821">
+      <End Role="user" EntitySet="users" />
+      <End Role="creditInformation" EntitySet="creditInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__game__rating__4CA06362" Association="Self.FK__game__rating__4CA06362">
+      <End Role="esrb_rating" EntitySet="esrb_rating" />
+      <End Role="game" EntitySet="games" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event_register_eventData" Association="Self.FK_event_register_eventData">
+      <End Role="eventData" EntitySet="eventDatas" />
+      <End Role="event_register" EntitySet="event_register" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event_register_login" Association="Self.FK_event_register_login">
+      <End Role="login" EntitySet="logins" />
+      <End Role="event_register" EntitySet="event_register" />
+    </AssociationSet>
+    <AssociationSet Name="FK__event__createdBy__4D94879B" Association="Self.FK__event__createdBy__4D94879B">
+      <End Role="user" EntitySet="users" />
+      <End Role="eventData" EntitySet="eventDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendsList_FriendsList" Association="Self.FK_FriendsList_FriendsList">
+      <End Role="user" EntitySet="users" />
+      <End Role="FriendsList" EntitySet="FriendsLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__game__genre__49C3F6B7" Association="Self.FK__game__genre__49C3F6B7">
+      <End Role="genre" EntitySet="genres" />
+      <End Role="game" EntitySet="games" />
+    </AssociationSet>
+    <AssociationSet Name="FK__game__genre__4BAC3F29" Association="Self.FK__game__genre__4BAC3F29">
+      <End Role="genre" EntitySet="genres" />
+      <End Role="game" EntitySet="games" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__gameId__4F7CD00D" Association="Self.FK__orders__gameId__4F7CD00D">
+      <End Role="game" EntitySet="games" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__wishList__gameId__5165187F" Association="Self.FK__wishList__gameId__5165187F">
+      <End Role="game" EntitySet="games" />
+      <End Role="wishList" EntitySet="wishLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reviews_user" Association="Self.FK_reviews_user">
+      <End Role="game" EntitySet="games" />
+      <End Role="reviews" EntitySet="reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user__favGenre__72C60C4A" Association="Self.FK__user__favGenre__72C60C4A">
+      <End Role="genre" EntitySet="genres" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user__favGenre2__71D1E811" Association="Self.FK__user__favGenre2__71D1E811">
+      <End Role="genre" EntitySet="genres" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__login__username__5AEE82B9" Association="Self.FK__login__username__5AEE82B9">
+      <End Role="user" EntitySet="users" />
+      <End Role="login" EntitySet="logins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__status__756D6ECB" Association="Self.FK__orders__status__756D6ECB">
+      <End Role="orderStatus" EntitySet="orderStatus" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__username__4E88ABD4" Association="Self.FK__orders__username__4E88ABD4">
+      <End Role="user" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__passReset__usern__76969D2E" Association="Self.FK__passReset__usern__76969D2E">
+      <End Role="user" EntitySet="users" />
+      <End Role="passReset" EntitySet="passResets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user__favPlatfor__6FE99F9F" Association="Self.FK__user__favPlatfor__6FE99F9F">
+      <End Role="platform" EntitySet="platforms" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user__favPlatfor__70DDC3D8" Association="Self.FK__user__favPlatfor__70DDC3D8">
+      <End Role="platform" EntitySet="platforms" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__wishList__userna__5070F446" Association="Self.FK__wishList__userna__5070F446">
+      <End Role="user" EntitySet="users" />
+      <End Role="wishList" EntitySet="wishLists" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

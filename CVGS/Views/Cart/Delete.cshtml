@@ -1,0 +1,42 @@
+﻿@model CVGS.cart
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to remove this item from your cart?</h3>
+<div>
+    <h4>cart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.game.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.game.price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remove" class="btn btn-default" /> |
+            @Html.ActionLink("Cancel", "Index")
+        </div>
+    }
+</div>

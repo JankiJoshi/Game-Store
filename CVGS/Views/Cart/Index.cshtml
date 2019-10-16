@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CVGS.cart>
+
+@{
+    ViewBag.Title = "Your Cart";
+}
+
+<h2>Your Cart</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            User
+        </th>
+        <th>
+            Game Name
+        </th>
+        <th>
+            Quantity
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.game.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.ActionLink("Change Quantity", "Edit", new { id = item.gameId }) |
+                @Html.ActionLink("Game Details", "Details", "Game", new { id = item.gameId }, null) |
+                @Html.ActionLink("Remove from Cart", "Delete", new { id = item.gameId })
+            </td>
+        </tr>
+    }
+</table>
+
+@* Display total price *@
+<b>@ViewBag.Total</b><p />
+
+@* Direct to Create Order *@
+@Html.ActionLink("Checkout", "Create", "Orders", null, null)

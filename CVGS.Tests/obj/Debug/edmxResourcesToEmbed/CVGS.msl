@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CVGSModelStoreContainer" CdmEntityContainer="CVGSEntities">
+    <EntitySetMapping Name="esrb_rating">
+      <EntityTypeMapping TypeName="CVGSModel.esrb_rating">
+        <MappingFragment StoreEntitySet="esrb_rating">
+          <ScalarProperty Name="ratingCode" ColumnName="ratingCode" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="events">
+      <EntityTypeMapping TypeName="CVGSModel.event">
+        <MappingFragment StoreEntitySet="event">
+          <ScalarProperty Name="eventId" ColumnName="eventId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="games">
+      <EntityTypeMapping TypeName="CVGSModel.game">
+        <MappingFragment StoreEntitySet="game">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="publisher" ColumnName="publisher" />
+          <ScalarProperty Name="publishDate" ColumnName="publishDate" />
+          <ScalarProperty Name="genre" ColumnName="genre" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genres">
+      <EntityTypeMapping TypeName="CVGSModel.genre">
+        <MappingFragment StoreEntitySet="genre">
+          <ScalarProperty Name="genreKey" ColumnName="genreKey" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logins">
+      <EntityTypeMapping TypeName="CVGSModel.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="CVGSModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="gameId" ColumnName="gameId" />
+          <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+          <ScalarProperty Name="shipDate" ColumnName="shipDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="CVGSModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mailAddress" ColumnName="mailAddress" />
+          <ScalarProperty Name="shipAddress" ColumnName="shipAddress" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="employee" ColumnName="employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="wishList" TypeName="CVGSModel.wishList" StoreEntitySet="wishList">
+      <EndProperty Name="game">
+        <ScalarProperty Name="id" ColumnName="gameId" />
+      </EndProperty>
+      <EndProperty Name="user">
+        <ScalarProperty Name="username" ColumnName="username" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

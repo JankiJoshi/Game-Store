@@ -1,0 +1,74 @@
+﻿@model CVGS.cart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @* Info on game *@
+        <dt>
+            @Html.DisplayNameFor(model => model.game.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.game.description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.game.publisher)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.publisher)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.game.publishDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.publishDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.game.price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.game.esrb_rating.description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.esrb_rating.description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.game.genre1.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.genre1.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.game.genre2.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.game.genre2.name)
+        </dd>
+        @* Info on quantity *@
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.gameId }) |
+    @Html.ActionLink("Back to Cart", "Index")
+</p>

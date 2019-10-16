@@ -1,0 +1,44 @@
+﻿@model CVGS.eventData
+
+@{
+    ViewData["Title"] = "Viewing an Event";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Event Number
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.eventId)
+        </dd>
+        <dt>
+            Event Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.name)
+        </dd>
+        <dt>
+            Date of Event
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.date)
+        </dd>
+        <dt>
+            Description
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.description)
+        </dd>
+        <dt>
+            Events' Creator
+        </dt>
+        <dd>
+            @Html.DisplayFor(item => item.createdBy)
+        </dd>
+    </dl>
+    @Html.ActionLink("Register for Event", "Create", "EventRegister", new { id = Model.eventId }, null) | @* Pass eventId to EventRegisters' Create method *@
+    @Html.ActionLink("Back to Events List", "Index")
+</div>

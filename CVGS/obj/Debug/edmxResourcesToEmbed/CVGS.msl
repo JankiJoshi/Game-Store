@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CVGSModelStoreContainer" CdmEntityContainer="CVGSEntities">
+    <EntitySetMapping Name="cardTypes">
+      <EntityTypeMapping TypeName="CVGSModel.cardType">
+        <MappingFragment StoreEntitySet="cardType">
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carts">
+      <EntityTypeMapping TypeName="CVGSModel.cart">
+        <MappingFragment StoreEntitySet="cart">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="gameId" ColumnName="gameId" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="creditInformations">
+      <EntityTypeMapping TypeName="CVGSModel.creditInformation">
+        <MappingFragment StoreEntitySet="creditInformation">
+          <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
+          <ScalarProperty Name="cardHolder" ColumnName="cardHolder" />
+          <ScalarProperty Name="cardType" ColumnName="cardType" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="securityCode" ColumnName="securityCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="esrb_rating">
+      <EntityTypeMapping TypeName="CVGSModel.esrb_rating">
+        <MappingFragment StoreEntitySet="esrb_rating">
+          <ScalarProperty Name="ratingCode" ColumnName="ratingCode" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="event_register">
+      <EntityTypeMapping TypeName="CVGSModel.event_register">
+        <MappingFragment StoreEntitySet="event_register">
+          <ScalarProperty Name="registerId" ColumnName="registerId" />
+          <ScalarProperty Name="eventId" ColumnName="eventId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eventDatas">
+      <EntityTypeMapping TypeName="CVGSModel.eventData">
+        <MappingFragment StoreEntitySet="eventData">
+          <ScalarProperty Name="eventId" ColumnName="eventId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FriendsLists">
+      <EntityTypeMapping TypeName="CVGSModel.FriendsList">
+        <MappingFragment StoreEntitySet="FriendsList">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="FriendIId" ColumnName="FriendIId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="games">
+      <EntityTypeMapping TypeName="CVGSModel.game">
+        <MappingFragment StoreEntitySet="game">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="publisher" ColumnName="publisher" />
+          <ScalarProperty Name="publishDate" ColumnName="publishDate" />
+          <ScalarProperty Name="genre" ColumnName="genre" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genres">
+      <EntityTypeMapping TypeName="CVGSModel.genre">
+        <MappingFragment StoreEntitySet="genre">
+          <ScalarProperty Name="genreKey" ColumnName="genreKey" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logins">
+      <EntityTypeMapping TypeName="CVGSModel.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="CVGSModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="gameId" ColumnName="gameId" />
+          <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+          <ScalarProperty Name="shipDate" ColumnName="shipDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderStatus">
+      <EntityTypeMapping TypeName="CVGSModel.orderStatu">
+        <MappingFragment StoreEntitySet="orderStatus">
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="passResets">
+      <EntityTypeMapping TypeName="CVGSModel.passReset">
+        <MappingFragment StoreEntitySet="passReset">
+          <ScalarProperty Name="resetCode" ColumnName="resetCode" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="platforms">
+      <EntityTypeMapping TypeName="CVGSModel.platform">
+        <MappingFragment StoreEntitySet="platform">
+          <ScalarProperty Name="platformId" ColumnName="platformId" />
+          <ScalarProperty Name="platformName" ColumnName="platformName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reviews">
+      <EntityTypeMapping TypeName="CVGSModel.review">
+        <MappingFragment StoreEntitySet="reviews">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="review1" ColumnName="review" />
+          <ScalarProperty Name="gameId" ColumnName="gameId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="approve" ColumnName="approve" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="CVGSModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mailAddress" ColumnName="mailAddress" />
+          <ScalarProperty Name="shipAddress" ColumnName="shipAddress" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="employee" ColumnName="employee" />
+          <ScalarProperty Name="favPlatform" ColumnName="favPlatform" />
+          <ScalarProperty Name="favPlatform2" ColumnName="favPlatform2" />
+          <ScalarProperty Name="favGenre" ColumnName="favGenre" />
+          <ScalarProperty Name="favGenre2" ColumnName="favGenre2" />
+          <ScalarProperty Name="promoEmails" ColumnName="promoEmails" />
+          <ScalarProperty Name="publicWishlist" ColumnName="publicWishlist" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wishLists">
+      <EntityTypeMapping TypeName="CVGSModel.wishList">
+        <MappingFragment StoreEntitySet="wishList">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="gameId" ColumnName="gameId" />
+          <ScalarProperty Name="dateAdded" ColumnName="dateAdded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

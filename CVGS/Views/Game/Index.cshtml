@@ -1,0 +1,116 @@
+﻿@model IEnumerable<CVGS.game>
+
+@{
+    ViewBag.Title = "Game Index";
+}
+
+<h2>Games List</h2>
+@if (Session["Emp"] != null)
+{
+    <p>
+        @Html.ActionLink("Create New Game", "Create")
+    </p>
+}
+
+<!--Download Function-->
+@Html.ActionLink("Download", "Download")
+<br /><br />
+
+<!--Search Function-->
+@using (Html.BeginForm("Index", "Game", FormMethod.Get))
+{
+
+
+    <input type="text" name="Search" id="Search" />
+    <input type="submit" value="Search" />
+
+
+}
+
+@{
+    if (ViewBag.SearchKey != null)
+    {
+        <span>
+            Search Key: @ViewBag.SearchKey
+        </span>
+    }
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publishDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esrb_rating.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre1.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre2.name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.esrb_rating.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre1.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre2.name)
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Add to Wishlist", "Create", "Wishlist", new { id = item.id }, null)
+                <br />
+                @Html.ActionLink("Details", "Details", new { id = item.id })
+                <br />
+
+                @if (Session["Emp"] != null)
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                    <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                }
+            </td>
+        </tr>
+    }
+
+
+
+</table>

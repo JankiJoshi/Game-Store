@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CVGS.wishList>
+
+@{
+    ViewBag.Title = "Wishlist";
+}
+
+<h2>Wishlist</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.game.name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.game.name)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.gameId })
+                <br />
+                @if (Session["Emp"] != null)
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.gameId })
+                    <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.gameId })
+                }
+            </td>
+        </tr>
+    }
+
+    <br />
+
+</table>

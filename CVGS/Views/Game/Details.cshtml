@@ -1,0 +1,120 @@
+﻿@model CVGS.game
+
+@{
+    ViewBag.Title = "Game Details";
+}
+
+<h2>Details of Game</h2>
+
+<div>
+    <hr />
+    @{
+        decimal? parameterValue = Model.reviews.Where(r => r.gameId == Model.id).Where(r => r.approve.HasValue).Average(r => r.rating);
+    }
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.publisher)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.publisher)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.publishDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.publishDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.esrb_rating.description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.esrb_rating.description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.genre1.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.genre1.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.genre2.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.genre2.name)
+            </dd>
+
+            <dt>
+                Average Rating
+            </dt>
+            <dd>
+                @parameterValue
+            </dd>
+
+        </dl>
+    </div>
+<div>
+    @Html.ActionLink("=> Go to all Reviews", "Index", "Review", new { id = Model.id }, null)
+</div>
+<div>
+    <h3>Add Review</h3>
+    @using (Html.BeginForm("Index", "Review"))
+    {
+        <div>
+            <label for="rate">Ratings: </label>
+            <select id="rate" name="rate">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div>
+            <label for="txtAreaReview">Review: </label>
+            <textarea class="form-control text-box multi-line" id="txtAreaReview" name="txtAreaReview" rows="3" width=75%></textarea>
+            <span class="field-validation-valid text-danger" data-valmsg-for="txtAreaReview" data-valmsg-replace="true"></span>
+        </div>
+        <input type="hidden" name="id" value="@Model.id" />
+        <br /><br />
+        <input type="submit" value="Submit" />
+    }
+</div>
+<div>
+    <br /><br /><br />
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Add to Cart", "Create", "Cart", new { id = Model.id }, null) | @* Pass gameId to CartControllers' Create method *@
+    @Html.ActionLink("Back to List", "Index")
+</div>

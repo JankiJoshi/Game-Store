@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CVGS.eventData>
+
+@{
+    ViewData["Title"] = "All Planned Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Event Number
+            </th>
+            <th>
+                Event Name
+            </th>
+            <th>
+                Date of Event
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.eventId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                
+                <td>
+                    @Html.ActionLink("View", "View", new { id = item.eventId })
+                    <br />
+                    @if (Session["Emp"] != null)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.eventId }) 
+                        <br />
+                        @Html.ActionLink("Delete", "Delete", new { id = item.eventId })
+                    }
+                </td>
+                
+            </tr>
+
+        }
+    </tbody>
+</table>
+@if (Session["Emp"] != null)
+{
+    <div style="float:right;">
+        @Html.ActionLink("Add new Event", "Create")
+    </div>
+}
+
+
+

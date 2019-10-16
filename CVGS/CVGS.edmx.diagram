@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd787953890b419c94d128a375fce7d6" Name="Diagram1">
+        <EntityTypeShape EntityType="CVGSModel.cardType" Width="1.5" PointX="9" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.cart" Width="1.5" PointX="13.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.creditInformation" Width="1.5" PointX="11.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.esrb_rating" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.event_register" Width="1.5" PointX="10.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.eventData" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.FriendsList" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.game" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.genre" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.login" Width="1.5" PointX="8.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.order" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.orderStatu" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.passReset" Width="1.5" PointX="8.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.platform" Width="1.5" PointX="3.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.review" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.user" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CVGSModel.wishList" Width="1.5" PointX="11.25" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="CVGSModel.FK__creditInf__cardT__7A3223E8" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK_cart_game" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK_cart_login" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__creditInf__usern__7B264821" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__game__rating__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK_event_register_eventData" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK_event_register_login" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__event__createdBy__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK_FriendsList_FriendsList" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__game__genre__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__game__genre__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__orders__gameId__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__wishList__gameId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK_reviews_user" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__user__favGenre__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__user__favGenre2__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__login__username__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__orders__status__756D6ECB" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__orders__username__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__passReset__usern__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__user__favPlatfor__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__user__favPlatfor__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="CVGSModel.FK__wishList__userna__5070F446" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

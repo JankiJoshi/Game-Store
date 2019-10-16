@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CVGS.user>
+
+@{
+    ViewBag.Title = "FriendsAndFamily";
+}
+
+<h2>All Members</h2>
+    
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.firstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @using (Html.BeginForm("Create", "FriendsAndFamily"))
+                    {
+                        <input type="hidden" name="username" value="@item.username" />
+                        <input type="submit" value="Add Member" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

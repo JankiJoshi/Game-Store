@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CVGS.order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.orderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.game.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.orderStatu.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user.username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.orderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.shipDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.game.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.orderStatu.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.username)
+        </td>
+        <td>
+            @if (Session["Emp"] != null)
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.orderId })
+            }
+            <br />
+            @Html.ActionLink("Details", "Details", new { id = item.orderId })
+        </td>
+    </tr>
+}
+
+</table>

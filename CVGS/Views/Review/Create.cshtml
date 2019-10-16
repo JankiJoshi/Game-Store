@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CVGS.review>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Review</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Reviews
+        </th>
+        <th>
+            Reviewed By
+        </th>
+        @if (Session["Emp"] != null)
+        {
+        <th>
+            Approve
+        </th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.review1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        @if (Session["Emp"] != null)
+        {
+            <td>
+                @using(Html.BeginForm("Create", "Review"))
+                {
+                <input type="checkbox" name="cId" id="cId" checked="@item.approve" />
+                <input type="hidden" name="id" value="@item.id" />
+                <input type="hidden" name="gameId" value="@item.gameId" />
+                <input type="submit" value="Submit" />
+                }
+            </td>
+        }
+    </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Back to Reviews", "Index", "Review")
+</p>
+

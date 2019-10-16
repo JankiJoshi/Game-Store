@@ -1,0 +1,26 @@
+﻿@model IEnumerable<CVGS.FriendsList>
+
+@{
+    ViewBag.Title = "FriendsAndFamily";
+}
+
+<h2>Friends And Family List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FriendIId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FriendIId)
+            </td>
+        </tr>
+    }
+    @Html.ActionLink("Add Member to List", "Create")
+</table>

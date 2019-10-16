@@ -1,0 +1,64 @@
+﻿@model CVGS.creditInformation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>creditInformation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cardHolder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cardHolder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.securityCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.securityCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cardType1.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cardType1.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.firstName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

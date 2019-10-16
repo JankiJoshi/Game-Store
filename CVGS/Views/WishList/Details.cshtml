@@ -1,0 +1,41 @@
+﻿@model CVGS.wishList
+
+@{
+    ViewBag.Title = "Details of Wishlist";
+}
+
+<h2>Details of Wishlist</h2>
+
+<div>
+    <h4>wishList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dateAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.game.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.game.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.firstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
